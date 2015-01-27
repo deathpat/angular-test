@@ -1,10 +1,11 @@
 angular.module('root', [
 	'ui.router',
+	'ngAnimate',
 	'LoginModule',
 	'HomeModule'
 ])
 
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$urlRouterProvider', function($urlRouterProvider) {
 	$urlRouterProvider
 	.otherwise('/login');
 }])
