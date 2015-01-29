@@ -14,12 +14,12 @@ LoginModule.config(['$stateProvider', function($stateProvider) {
 	})
 	.state('login.step1', {
 		url: '',
-		templateUrl: '/js/app/login/loginStep1.html',
+		templateUrl: '/app/login/loginStep1.html',
 		controller: 'LoginCtrl'
 	})
 	.state('login.step2', {
 		url: '.patate',
-		templateUrl: '/js/app/login/loginStep2.html',
+		templateUrl: '/app/login/loginStep2.html',
 		controller: 'LoginCtrl'
 	});
 }])

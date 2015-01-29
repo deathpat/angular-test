@@ -11,7 +11,7 @@ angular.module('HomeModule', [
 	})
 	.state('home.main', {
 		url: '',
-		templateUrl: '/js/app/home/homeContent.html',
+		templateUrl: '/app/home/homeContent.html',
 		controller: 'HomeCtrl'
 	});
 }])
