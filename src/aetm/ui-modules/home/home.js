@@ -11,12 +11,7 @@ angular.module('aetm.ui.home.HomeModule', [
 	.state('home', {
 		parent: 'base-layout.headfoot',
 		abstract: true,
-		url: '/home',
-		onEnter: ['$state', 'loginServices', function($state, loginServices) {
-			if (loginServices.getLogin() == '') {
-				$state.go('login.step1');
-			}
-		}]
+		url: '/home'
 	})
 	.state('home.main', {
 		url: '',
@@ -35,7 +30,7 @@ angular.module('aetm.ui.home.HomeModule', [
 	self.login = loginServices.getLogin();
 
 	self.doLogout = function() {
-		loginServices.reset();
+		loginServices.doLogout();
 		$state.go('login.step1');
 	};
 
