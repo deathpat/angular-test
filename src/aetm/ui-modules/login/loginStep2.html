@@ -1,0 +1,16 @@
+<div class="loginForm">
+	<form class="loginFormContent">
+		<div class="formLine">
+			<label for="login">Community</label>
+			<select id="community" ng-model="ctrl.community" kendo-drop-down-list>
+				<option value="">please select</option>
+				<option>com 1</option>
+				<option>com 2</option>
+			</select>
+		</div>
+		<div class="buttonLine">
+			<button ng-click="ctrl.doBackToLogin()" class="k-button" style="float:left">back</button>
+			<button ng-click="ctrl.doStep2()" class="k-button" style="float:right">continue</button>
+		</div>
+	</form>
+</div>

@@ -2,16 +2,27 @@
 <html lang="en" ng-app="aetm.MainModule">
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link href="/kendo-ui/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="/kendo-ui/styles/kendo.amadeus.css" rel="stylesheet" />
+
+	<script type="text/javascript" src="/kendo-ui/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/lib/angular.js"></script>
+	<script type="text/javascript" src="/kendo-ui/js/kendo.ui.core.min.js"></script>
+
 	<script type="text/javascript" src="/lib/angular-animate.js"></script>
 	<script type="text/javascript" src="/lib/angular-ui-router.js"></script>
 	
 	<script type="text/javascript" src="/aetm/aetm.js"></script>
-	<script type="text/javascript" src="/aetm/modules/login/login.js"></script>
-	<script type="text/javascript" src="/aetm/modules/login/login.config.js"></script>
-	<script type="text/javascript" src="/aetm/modules/login/login.ctrl.js"></script>
-	<script type="text/javascript" src="/aetm/modules/home/home.js"></script>
+	<script type="text/javascript" src="/aetm/ui-modules/header/header.js"></script>
+	<script type="text/javascript" src="/aetm/ui-modules/layout/baseLayout.js"></script>
+	<script type="text/javascript" src="/aetm/ui-modules/layout/loginLayout.js"></script>
+	
+	<script type="text/javascript" src="/aetm/ui-modules/login/login.js"></script>
+	<script type="text/javascript" src="/aetm/ui-modules/login/login.config.js"></script>
+	<script type="text/javascript" src="/aetm/ui-modules/login/login.ctrl.js"></script>
+
+	<script type="text/javascript" src="/aetm/ui-modules/home/home.js"></script>
 </head>
 <body ui-view>
 </body>
