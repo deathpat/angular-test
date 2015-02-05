@@ -1,6 +1,9 @@
 angular.module('aetm.ui.login.LoginModule')
 
-.controller('aetm.ui.login.LoginCtrl', ['$state', 'loginServices', function($state, loginServices) {
+.controller('aetm.ui.login.LoginCtrl', 
+	['$state', 'loginServices', '$location', 
+	function($state, loginServices, $location) {
+
 	var self = this;
 	self.login = loginServices.getLogin();
 	self.password = '';
@@ -8,25 +11,29 @@ angular.module('aetm.ui.login.LoginModule')
 
 	self.doLogin = function doLogin() {
 		loginServices.doLogin(self.login, self.password, self.switchCommunity)
-		.then(function() {
+		.then(function(profile) {
 			if (self.switchCommunity) {
 				$state.go('login.step2');
 			} else {
-				$state.go('home.main');
+				$location.url('/home');
 			}
-		}, function() {
-			alert('coin');
+		}, function(error) {
+			alert('ko');
+			throw error;
 		});
 	};
 }])
 
-.controller('aetm.ui.login.LoginCtrl2', ['$state', 'loginServices', function($state, loginServices) {
+.controller('aetm.ui.login.LoginCtrl2', 
+	['$state', 'loginServices', '$location', 
+	function($state, loginServices, $location) {
+
 	var self = this;
 	self.login = loginServices.getLogin();
 	self.community = '';
 
 	self.doStep2 = function doStep2() {
-		$state.go('home.main');
+		$location.url('/home');
 	};
 
 	self.doBackToLogin = function doBackToLogin() {

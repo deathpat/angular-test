@@ -5,7 +5,7 @@ angular.module('aetm.ui.login.LoginModule', [
 
 .constant('AETM_LOGIN_PATH', '/aetm/ui-modules/login')
 
-.service('loginServices', ['$rootScope', 'httpUtils', function($rootScope, httpUtils) {
+.service('loginServices', ['$rootScope', 'httpUtils', '$q', function($rootScope, httpUtils, $q) {
 	var self = this;
 
 	self.profile = {
@@ -16,20 +16,26 @@ angular.module('aetm.ui.login.LoginModule', [
 	};
 
 	self.doLogin = function(sLogin, sPassword, bSwitchCommunity) {
-		return httpUtils.callHandler('login', 'doLogin', {
+		self.profile.login = sLogin;
+		self.profile.password = sPassword;
+		self.profile.switchCommunity = bSwitchCommunity;
+
+		var deferred = $q.defer();
+
+		httpUtils.callHandler('login', 'doLogin', {
 			raviole: 'saucisse',
 			login: sLogin,
 			password: sPassword,
 			switchCommunity: bSwitchCommunity
-		}).then(function(response) {
-			self.profile.login = sLogin;
-			self.profile.password = sPassword;
-			self.profile.switchCommunity = bSwitchCommunity;
-			self.profile.loggedIn = sLogin != '';
+		}).success(function(response) {
+			self.profile.loggedIn = true;
 			self.__sendLoginUpdate();
-		}, function() {
+			deferred.resolve(self.profile);
+		}).error(function(msg, code) {
 			self.profile.loggedIn = false;
+			deferred.reject(msg);
 		});
+		return deferred.promise;
 	};
 
 	self.doLogout = function() {

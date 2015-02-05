@@ -1,3 +1,13 @@
+angular.module('aetm.MainModule', [
+	'aetm.Config',
+	'aetm.Utils',
+	'aetm.ui.header.HeaderModule',
+	'aetm.ui.layout.LoginLayoutModule',
+	'aetm.ui.layout.BaseLayoutModule',
+	'aetm.ui.login.LoginModule',
+	'aetm.ui.home.HomeModule'
+]);
+
 angular.module('aetm.Config', [
 	'ui.router',
 	'kendo.directives'
@@ -18,18 +28,8 @@ angular.module('aetm.Config', [
 	for (key in url) {
 		alert(key + " : " + url[key]);
 	}
-	$location.url('/home');
+	//$location.url('/home');
 }]);
-
-angular.module('aetm.MainModule', [
-	'aetm.Config',
-	'aetm.Utils',
-	'aetm.ui.header.HeaderModule',
-	'aetm.ui.layout.LoginLayoutModule',
-	'aetm.ui.layout.BaseLayoutModule',
-	'aetm.ui.login.LoginModule',
-	'aetm.ui.home.HomeModule'
-]);
 
 angular.module('aetm.Utils', [])
 
