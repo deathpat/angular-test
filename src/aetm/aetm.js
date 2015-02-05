@@ -9,6 +9,7 @@ angular.module('aetm.MainModule', [
 ]);
 
 angular.module('aetm.Config', [
+	'ngMockE2E',
 	'ui.router',
 	'kendo.directives'
 ])
@@ -23,12 +24,16 @@ angular.module('aetm.Config', [
 	.otherwise('/login');
 }])
 
-.run(['$location', function($location) {
+.run(['$location', '$httpBackend', function($location, $httpBackend) {
 	var url = $location.search();
 	for (key in url) {
 		alert(key + " : " + url[key]);
 	}
 	//$location.url('/home');
+
+	// setup mock
+	$httpBackend.whenPOST('/portalApp/handlers/modules/login/doLogin')
+	.respond({test:'youpi'});
 }]);
 
 angular.module('aetm.Utils', [])
